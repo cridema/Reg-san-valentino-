@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Sahib - Valentine's Surprise</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            font-family: 'Georgia', serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px;
+            overflow-x: hidden;
+        }
+
+        /* Rain of Hearts */
+        .heart-drop {
+            position: fixed;
+            top: -10%;
+            font-size: 2rem;
+            user-select: none;
+            z-index: 0;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 4.5rem;
+            text-shadow: 4px 4px 10px rgba(142, 16, 29, 0.5);
+            margin-bottom: 5px;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            color: #8E101D;
+            margin-bottom: 50px;
+            font-weight: bold;
+            z-index: 1;
+            text-align: center;
+        }
+
+        /* The Box */
+        .box {
+            background: #4e342e;
+            padding: 50px;
+            border-radius: 40px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            border: 15px double #D4AF37;
+            max-width: 1000px;
+            z-index: 1;
+        }
+
+        /* Image-based Chocolate Button */
+        .choco {
+            width: 250px;
+            height: 250px;
+            border: 3px solid #D4AF37;
+            border-radius: 20px;
+            cursor: pointer;
+            overflow: hidden; /* Taglia l'immagine se è troppo grande */
+            transition: all 0.4s ease;
+            box-shadow: 8px 8px 15px rgba(0,0,0,0.3);
+            padding: 0;
+            background: #3e2723;
+            animation: pulse 2s infinite;
+        }
+
+        /* L'immagine dentro il bottone */
+        .choco img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Fa sì che l'immagine riempia il quadrato senza deformarsi */
+            display: block;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); box-shadow: 0 0 25px #D4AF37; }
+            100% { transform: scale(1); }
+        }
+
+        .choco:hover {
+            transform: scale(1.1) rotate(3deg);
+            z-index: 2;
+            animation: none;
+        }
+
+        /* Message Display */
+        #msg-box {
+            display: none;
+            margin-top: 50px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            width: 85%;
+            max-width: 900px;
+            text-align: center;
+            border: 5px solid #D4AF37;
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: #4e342e;
+            z-index: 1;
+        }
+
+        footer {
+            margin-top: 50px;
+            color: white;
+            font-size: 1.2rem;
+            z-index: 1;
+            background: rgba(142, 16, 29, 0.6);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>For My Sahib ❤️</h1>
+    <div class="subtitle">Every chocolate has a message for you... <br> (Click them!)</div>
+
+    <div class="box">
+        <button class="choco" onclick="reveal('You are my greatest victory! ⚽')">
+            <img src="imm.jpg" alt="Chocolate">
+        </button>
+        
+        <button class="choco" onclick="reveal('S - Simply the only one for me 🌹')">
+            <img src="imm2.jpg" alt="Chocolate">
+        </button>
+        
+        <button class="choco" onclick="reveal('A - Always in my heart and mind ✨')">
+            <img src="imm3.jpg" alt="Chocolate">
+        </button>
+        
+        <button class="choco" onclick="reveal('H - Heaven is being with you ⏳')">
+            <img src="imm4.jpg" alt="Chocolate">
+        </button>
+        
+        <button class="choco" onclick="reveal('I - Incredible in every single way 🏟️')">
+            <img src="imm5.jpg" alt="Chocolate">
+        </button>
+        
+        <button class="choco" onclick="reveal('Password: 251225... Forever. 🔒')">
+            <img src="imm6.jpg" alt="Chocolate">
+        </button>
+    </div>
+
+    <div id="msg-box"></div>
+
+    <footer>DEMA ❤️ SAHIB</footer>
+
+    <script>
+        function reveal(text) {
+            const display = document.getElementById('msg-box');
+            display.innerHTML = text;
+            display.style.display = 'block';
+            display.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart-drop');
+            const icons = ['❤️', '💖', '🌹', '✨'];
+            heart.innerText = icons[Math.floor(Math.random() * icons.length)];
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+            heart.style.opacity = Math.random();
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+
+        setInterval(createHeart, 150);
+    </script>
+
+</body>
+</html>
