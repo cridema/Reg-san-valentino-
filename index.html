@@ -3,162 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Sahib - Valentine's Surprise</title>
+    <title>Happy Valentine's Day, My Love</title>
     <style>
         body {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
-            font-family: 'Georgia', serif;
+            background: linear-gradient(180deg, #ffdde1 0%, #ee9ca7 100%);
+            font-family: "Times New Roman", Times, serif;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            padding: 40px;
+            padding: 20px;
             overflow-x: hidden;
+            color: #4e342e;
         }
 
-        /* Rain of Hearts */
+        /* Rain of Hearts & Roses */
         .heart-drop {
             position: fixed;
-            top: -10%;
-            font-size: 2rem;
+            top: -5%;
+            font-size: 1.2rem;
             user-select: none;
             z-index: 0;
+            pointer-events: none;
             animation: fall linear forwards;
+            opacity: 0.5;
         }
 
         @keyframes fall {
-            to { transform: translateY(110vh) rotate(360deg); }
+            to { transform: translateY(110vh) rotate(20deg); }
         }
 
         h1 {
-            color: #ffffff;
-            font-size: 4.5rem;
-            text-shadow: 4px 4px 10px rgba(142, 16, 29, 0.5);
-            margin-bottom: 5px;
+            font-weight: normal;
+            font-style: italic;
+            font-size: 2.2rem;
+            margin-top: 50px;
+            margin-bottom: 25px;
             z-index: 1;
+            text-align: center;
+            color: #c64b4b;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.4);
         }
 
         .subtitle {
-            font-size: 1.8rem;
+            font-style: italic;
+            font-size: 1rem;
             color: #8E101D;
-            margin-bottom: 50px;
-            font-weight: bold;
+            margin-bottom: 40px;
             z-index: 1;
             text-align: center;
+            opacity: 0.8;
         }
 
         /* The Box */
         .box {
             background: #4e342e;
-            padding: 50px;
-            border-radius: 40px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            border: 15px double #D4AF37;
-            max-width: 1000px;
-            z-index: 1;
-        }
-
-        /* Image-based Chocolate Button */
-        .choco {
-            width: 250px;
-            height: 250px;
-            border: 3px solid #D4AF37;
+            padding: 15px;
             border-radius: 20px;
-            cursor: pointer;
-            overflow: hidden; /* Taglia l'immagine se è troppo grande */
-            transition: all 0.4s ease;
-            box-shadow: 8px 8px 15px rgba(0,0,0,0.3);
-            padding: 0;
-            background: #3e2723;
-            animation: pulse 2s infinite;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            border: 1px solid #D4AF37; 
+            max-width: 600px;
+            width: 90%;
+            z-index: 1;
+            box-sizing: border-box;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
         }
 
-        /* L'immagine dentro il bottone */
+        @media (min-width: 768px) {
+            h1 { font-size: 3.5rem; margin-bottom: 35px; }
+            .box { grid-template-columns: repeat(3, 1fr); padding: 30px; }
+        }
+
+        .choco {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            border: 1px solid #D4AF37;
+            border-radius: 12px;
+            cursor: pointer;
+            overflow: hidden;
+            padding: 0;
+            background: #2b1d1a;
+            transition: transform 0.2s;
+        }
+
         .choco img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Fa sì che l'immagine riempia il quadrato senza deformarsi */
+            object-fit: cover;
             display: block;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.03); box-shadow: 0 0 25px #D4AF37; }
-            100% { transform: scale(1); }
+        .choco:active {
+            transform: scale(0.95);
         }
 
-        .choco:hover {
-            transform: scale(1.1) rotate(3deg);
-            z-index: 2;
-            animation: none;
-        }
-
-        /* Message Display */
         #msg-box {
             display: none;
-            margin-top: 50px;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.95);
+            margin-top: 35px;
+            padding: 25px 35px;
+            background: #fff8e1; 
             border-radius: 30px;
-            width: 85%;
-            max-width: 900px;
+            width: 80%;
+            max-width: 450px;
             text-align: center;
-            border: 5px solid #D4AF37;
-            font-size: 2.8rem;
-            font-weight: bold;
+            font-style: italic;
+            font-size: 1.4rem;
             color: #4e342e;
             z-index: 1;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            animation: smoothFade 0.6s ease;
+        }
+
+        @keyframes smoothFade {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         footer {
-            margin-top: 50px;
-            color: white;
-            font-size: 1.2rem;
+            margin-top: auto;
+            padding: 50px 0 20px 0;
+            color: #ffffff;
+            font-size: 0.7rem;
+            letter-spacing: 3px;
             z-index: 1;
-            background: rgba(142, 16, 29, 0.6);
-            padding: 10px 20px;
-            border-radius: 10px;
+            opacity: 0.6;
         }
     </style>
 </head>
 <body>
 
-    <h1>For My Sahib ❤️</h1>
-    <div class="subtitle">Every chocolate has a message for you... <br> (Click them!)</div>
+    <h1>Happy Valentine's Day, Mia dolce metà</h1>
+    <div class="subtitle">Every chocolate has a message for you... <br>(Click them all)</div>
 
     <div class="box">
-        <button class="choco" onclick="reveal('You are my greatest victory! ⚽')">
-            <img src="imm.jpg" alt="Chocolate">
+        <button class="choco" onclick="reveal('you are sweeter than this chocolate, mia miela😘')">
+            <img src="imm3.jpg" alt="Choco">
         </button>
-        
-        <button class="choco" onclick="reveal('S - Simply the only one for me 🌹')">
-            <img src="imm2.jpg" alt="Chocolate">
+        <button class="choco" onclick="reveal('Be careful! The chocolates in this heart are addictive, just like u😝')">
+            <img src="imm2.jpg" alt="Choco">
         </button>
-        
-        <button class="choco" onclick="reveal('A - Always in my heart and mind ✨')">
-            <img src="imm3.jpg" alt="Chocolate">
+        <button class="choco" onclick="reveal('This one is us: sweet togheter, but i will always have the key to open u😌')">
+            <img src="imm5.jpg" alt="Choco">
         </button>
-        
-        <button class="choco" onclick="reveal('H - Heaven is being with you ⏳')">
-            <img src="imm4.jpg" alt="Chocolate">
+        <button class="choco" onclick="reveal('This is dark chocolate, They basically took your skin to make it but u still are my favourite snack🫵🏻')">
+            <img src="imm.jpg" alt="Choco">
         </button>
-        
-        <button class="choco" onclick="reveal('I - Incredible in every single way 🏟️')">
-            <img src="imm5.jpg" alt="Chocolate">
+        <button class="choco" onclick="reveal('I would give you a rose like this today if I were there with you, I hope it smells at least as good as you do🤤')">
+            <img src="imm4.jpg" alt="Choco">
         </button>
-        
-        <button class="choco" onclick="reveal('Password: 251225... Forever. 🔒')">
-            <img src="imm6.jpg" alt="Chocolate">
+        <button class="choco" onclick="reveal('you are just like this heart, full of little things that make you perfect🤌🏻')">
+            <img src="foto.jpg" alt="Choco">
         </button>
     </div>
 
     <div id="msg-box"></div>
 
-    <footer>DEMA ❤️ SAHIB</footer>
+    <footer>CRISTIAN &bull; SAHIB</footer>
 
     <script>
         function reveal(text) {
@@ -168,19 +172,18 @@
             display.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
 
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart-drop');
-            const icons = ['❤️', '💖', '🌹', '✨'];
-            heart.innerText = icons[Math.floor(Math.random() * icons.length)];
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.animationDuration = Math.random() * 3 + 2 + "s";
-            heart.style.opacity = Math.random();
-            document.body.appendChild(heart);
-            setTimeout(() => heart.remove(), 5000);
+        function createEmoji() {
+            const emoji = document.createElement('div');
+            emoji.classList.add('heart-drop');
+            const list = ['❤️', '🌹', '✨', '💘'];
+            emoji.innerText = list[Math.floor(Math.random() * list.length)];
+            emoji.style.left = Math.random() * 100 + "vw";
+            emoji.style.animationDuration = Math.random() * 4 + 7 + "s";
+            document.body.appendChild(emoji);
+            setTimeout(() => emoji.remove(), 11000);
         }
 
-        setInterval(createHeart, 150);
+        setInterval(createEmoji, 1500);
     </script>
 
 </body>
